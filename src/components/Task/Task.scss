@@ -1,0 +1,33 @@
+.task {
+    background-color: #42484d;
+    padding: 1rem;
+    border-radius: .2rem;
+    margin-top: 2rem;
+    width: 100%;
+    color: silver;
+
+    .title {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+
+    span{
+        font-size: 16px;
+        color: #fff;
+        span{
+            font-size: 18px;
+            margin-right: .3rem;
+            color: #1affcd;
+        }
+
+    }
+
+    span.unit{
+        font-size: 10px;
+        margin-left: .2rem;
+        color: gray;
+    }
+}
