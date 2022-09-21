@@ -19,7 +19,7 @@ const Sidebar = () => {
     <div className="sidebar flex column">
         <img className='logo' src={logo} alt="logo" />
         {status ? <Form /> : ""}
-        {data.reverse().map((data,i) => <Task key={i} ti={data.message} ty={data.type} di={data.distance} du={data.duration} ca={data.cadence} />)}
+        {data && data.reverse().map((data,i) => <Task key={i} ti={data.message} ty={data.type} di={data.distance} du={data.duration} ca={data.cadence} />)}
     </div>
   )
 }

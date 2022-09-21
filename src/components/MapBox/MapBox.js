@@ -92,7 +92,7 @@ const MapBox = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <LocationMarker />
-        {data.map((mark,i)=> 
+        {data && data.map((mark,i)=> 
         <Marker key={i} position={mark.marker} icon={markIcon}>
         <Popup>
           <h1>{mark.message}</h1>

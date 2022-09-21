@@ -5,9 +5,9 @@ import store from './store/store'
 import './App.scss'
 
 const App = () => {
-  useEffect(() => {
-    localStorage.setItem('_data', JSON.stringify([]));
-  }, [])
+  // useEffect(() => {
+  //   localStorage.setItem('_data', JSON.stringify([]));
+  // }, [])
   return (
     <Provider store={store}>
         <Home />
