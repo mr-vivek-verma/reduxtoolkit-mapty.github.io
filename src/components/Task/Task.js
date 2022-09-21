@@ -5,13 +5,11 @@ import { BiCycling } from 'react-icons/bi';
 import { BsClockHistory , BsLightningCharge } from 'react-icons/bs';
 import { GiFootprint , GiMountainRoad } from 'react-icons/gi';
 
-let date = new Date()
-
-const Task = ({ty,di,du,ca}) => {
-    const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const Task = ({ti,ty,di,du,ca}) => {
+    
   return (
     <div style={{borderLeft: `5px solid ${ty === "cycling" ? "orange" : "green"}`}} className='task'>
-    <h1 className='title'>{ty} on {month[date.getMonth()]} {date.getDate()}</h1>
+    <h1 className='title'>{ti}</h1>
     <div className="flex-between">
         <span className="flex"><span>{ty === "cycling" ? <BiCycling /> : <FaRunning />}</span>{di}<span className='unit'>{"KM"}</span></span>
         <span className="flex"><span><BsClockHistory /></span>{du}<span className='unit'>{"MIN"}</span></span>

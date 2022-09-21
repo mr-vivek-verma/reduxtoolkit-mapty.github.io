@@ -1,5 +1,5 @@
 import React, { useRef , useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { add, remove } from "../../store/mapSlice";
 import "./Form.scss";
 
@@ -25,6 +25,7 @@ const Form = () => {
   ];
 
   const reset = () => {
+    localStorage.setItem('_data',JSON.stringify([]))
     dispatch(remove({}));
   };
 
@@ -32,14 +33,37 @@ const Form = () => {
     return parseInt(value) > 0 ? value : (err = true);
   };
 
+
+  const marker = useSelector((state)=>state.map.obj.marker)
+
   const set = () => {
     const type = dtype;
     const distance = checkIn(_distance.current.value);
     const duration = checkIn(_duration.current.value);
-    
     const cadence = checkIn(_cadence.current.value);
+
+    let date = new Date();
+    const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const message = `${type} on ${month[date.getMonth()]} ${date.getDate()}`
+
     if (err) console.log("not valid inputs !");
-    dispatch(add({ type, distance, duration, cadence }));
+
+    let entries = [];
+
+    dispatch(add({ type, distance, duration, cadence , marker , message}));
+
+    if(distance.length > 0 && duration.length > 0 && cadence.length > 0){
+      if(localStorage.getItem('_data')){
+        entries = JSON.parse(localStorage.getItem('_data')) 
+        entries.push({ type, distance, duration, cadence , marker , message })
+        localStorage.setItem('_data',JSON.stringify(entries))
+       }else{
+        entries.push({ type, distance, duration, cadence , marker , message })
+        localStorage.setItem('_data',JSON.stringify([{ type, distance, duration, cadence , marker , message }]))
+       }
+    }
+  
+    dispatch(add({ type, distance, duration, cadence, marker , message }));
   };
   return (
     <form className="form">
@@ -77,10 +101,10 @@ const Form = () => {
         )}
       </div>
       <button onClick={set} className="set">
-        Enter
+        Set
       </button>
       <button onClick={reset} className="reset">
-        Refresh
+        Reset
       </button>
     </form>
   );

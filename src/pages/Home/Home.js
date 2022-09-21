@@ -1,12 +1,12 @@
 import React from 'react'
-import Map from '../../components/Map/Map'
+import MapBox from '../../components/MapBox/MapBox'
 import Sidebar from '../../components/Siderbar/Sidebar'
 
 const Home = () => {
   return (
     <section className='home flex'>
     <Sidebar />
-    <Map />
+    <MapBox />
     </section>
   )
 }
